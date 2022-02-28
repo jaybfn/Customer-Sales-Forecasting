@@ -1,0 +1,248 @@
+model_mv_week_2.h5
+
+1: window_size = 4
+2: lags = 6
+3: split size = 0.9
+model = Sequential()
+model.add(Bidirectional(LSTM(1024, activation = 'tanh', input_shape = ( X_train.shape[1], X_train.shape[2]), return_sequences=True)))
+model.add(Bidirectional(LSTM(512, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(256,activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(128, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(64, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(32, activation = 'tanh', return_sequences = False)))
+model.add(Dropout(0.3))
+model.add(Dense(1024))
+model.add(Dense(512))#256,
+model.add(Dense(512))#256,128
+model.add(Dense(512))
+model.add(Dense(y_train.shape[1]))
+
+history = model.fit(X_train,y_train, epochs = 50, batch_size = 10, validation_split=0.2, verbose = 1)
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+model_mv_week_1.h5
+
+1: window_size = 2
+2: lags = 6
+3: split size = 0.9
+model = Sequential()
+model.add(Bidirectional(LSTM(1024, activation = 'tanh', input_shape = ( X_train.shape[1], X_train.shape[2]), return_sequences=True)))
+model.add(Bidirectional(LSTM(512, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(256,activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(128, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(64, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(32, activation = 'tanh', return_sequences = False)))
+model.add(Dropout(0.3))
+model.add(Dense(1024))
+model.add(Dense(512))#256,
+model.add(Dense(512))#256,128
+model.add(Dense(512))
+model.add(Dense(y_train.shape[1]))
+
+history = model.fit(X_train,y_train, epochs = 50, batch_size = 12, validation_split=0.2, verbose = 1)
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+model_mv_week_3.h5 ---- for forecasting
+
+1: window_size = 4
+2: lags = 6
+3: split size = 0.9
+model = Sequential()
+model.add(Bidirectional(LSTM(1024, activation = 'tanh', input_shape = ( X_train.shape[1], X_train.shape[2]), return_sequences=True)))
+model.add(Bidirectional(LSTM(512, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(256,activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(128, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(64, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(32, activation = 'tanh', return_sequences = False)))
+model.add(Dropout(0.3))
+model.add(Dense(1024))
+model.add(Dense(512))#256,
+model.add(Dense(512))#256,128
+model.add(Dense(512))
+model.add(Dense(y_train.shape[1]))
+
+history = model.fit(X_train,y_train, epochs = 50, batch_size = 15, validation_split=0.2, verbose = 1)
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+model_mv_week_4.h5 ---- for forecasting
+
+1: window_size = 5
+2: lags = 6
+3: split size = 0.9
+model = Sequential()
+model.add(Bidirectional(LSTM(1024, activation = 'tanh', input_shape = ( X_train.shape[1], X_train.shape[2]), return_sequences=True)))
+model.add(Bidirectional(LSTM(512, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(256,activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(128, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(64, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(32, activation = 'tanh', return_sequences = False)))
+model.add(Dropout(0.3))
+model.add(Dense(1024))
+model.add(Dense(512))#256,
+model.add(Dense(512))#256,128
+model.add(Dense(512))
+model.add(Dense(y_train.shape[1]))
+
+history = model.fit(X_train,y_train, epochs = 100, batch_size = 15, validation_split=0.2, verbose = 1)
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+model_mv_week_6.h5 ---- bad
+
+1: window_size = 8
+2: lags = 6
+3: split size = 0.9
+model = Sequential()
+model.add(Bidirectional(LSTM(1024, activation = 'tanh', input_shape = ( X_train.shape[1], X_train.shape[2]), return_sequences=True)))
+model.add(Bidirectional(LSTM(512, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(256,activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(128, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(64, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(32, activation = 'tanh', return_sequences = False)))
+model.add(Dropout(0.3))
+model.add(Dense(1024))
+model.add(Dense(512))#256,
+model.add(Dense(512))#256,128
+model.add(Dense(512))
+model.add(Dense(y_train.shape[1]))
+
+history = model.fit(X_train,y_train, epochs = 100, batch_size = 10, validation_split=0.2, verbose = 1)
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+model_mv_week_7.h5 ( good)
+
+1: window_size = 8
+2: lags = 6
+3: split size = 0.9
+model = Sequential()
+model.add(Bidirectional(LSTM(1024, activation = 'tanh', input_shape = ( X_train.shape[1], X_train.shape[2]), return_sequences=True)))
+model.add(Bidirectional(LSTM(512, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(256,activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(128, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(64, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(32, activation = 'tanh', return_sequences = False)))
+model.add(Dropout(0.3))
+model.add(Dense(1024))
+model.add(Dense(512))#256,
+model.add(Dense(512))#256,128
+model.add(Dense(512))
+model.add(Dense(y_train.shape[1]))
+
+history = model.fit(X_train,y_train, epochs = 100, batch_size = 10, validation_split=0.2, verbose = 1)
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+model_mv_week_8.h5 ( good) 5000 rmse
+
+1: window_size = 8
+2: lags = 6
+3: split size = 0.9
+model = Sequential()
+model.add(Bidirectional(LSTM(1024, activation = 'tanh', input_shape = ( X_train.shape[1], X_train.shape[2]), return_sequences=True)))
+model.add(Bidirectional(LSTM(512, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(256,activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(128, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(64, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(32, activation = 'tanh', return_sequences = False)))
+model.add(Dropout(0.3))
+model.add(Dense(1024))
+model.add(Dense(512))#256,
+model.add(Dense(512))#256,128
+model.add(Dense(512))
+model.add(Dense(y_train.shape[1]))
+
+history = model.fit(X_train,y_train, epochs = 100, batch_size = 10, validation_split=0.2, verbose = 1)
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+model_mv_week_9.h5 ( good) 7000 rmse good score and good fit
+
+1: window_size = 8
+2: lags = 6
+3: split size = 0.9
+model = Sequential()
+model.add(Bidirectional(LSTM(1024, activation = 'tanh', input_shape = ( X_train.shape[1], X_train.shape[2]), return_sequences=True)))
+model.add(Bidirectional(LSTM(512, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(256,activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(128, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(64, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(32, activation = 'tanh', return_sequences = False)))
+model.add(Dropout(0.3))
+model.add(Dense(1024))
+model.add(Dense(512))#256,
+model.add(Dense(512))#256,128
+model.add(Dense(512))
+model.add(Dense(y_train.shape[1]))
+
+history = model.fit(X_train,y_train, epochs = 500, batch_size = 10, validation_split=0.2, verbose = 1)
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+model_mv_week_10.h5 ( good) 7000 rmse good score and good fit with good R2
+
+1: window_size = 4
+2: lags = 6
+3: split size = 0.9
+model = Sequential()
+model.add(Bidirectional(LSTM(1024, activation = 'tanh', input_shape = ( X_train.shape[1], X_train.shape[2]), return_sequences=True)))
+model.add(Bidirectional(LSTM(512, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(256,activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(128, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(64, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(32, activation = 'tanh', return_sequences = False)))
+model.add(Dropout(0.3))
+model.add(Dense(1024))
+model.add(Dense(512))#256,
+model.add(Dense(512))#256,128
+model.add(Dense(512))
+model.add(Dense(y_train.shape[1]))
+
+history = model.fit(X_train,y_train, epochs = 1000, batch_size = 8, validation_split=0.2, verbose = 1)
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+model_mv_week_11.h5 ( good) 7000 rmse good score and good fit with +R2
+
+1: window_size = 4
+2: lags = 6
+3: split size = 0.9
+model = Sequential()
+model.add(Bidirectional(LSTM(1024, activation = 'tanh', input_shape = ( X_train.shape[1], X_train.shape[2]), return_sequences=True)))
+model.add(Bidirectional(LSTM(512, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(256,activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(128, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(64, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(32, activation = 'tanh', return_sequences = False)))
+model.add(Dropout(0.3))
+model.add(Dense(1024))
+model.add(Dense(512))#256,
+model.add(Dense(512))#256,128
+model.add(Dense(512))
+model.add(Dense(y_train.shape[1]))
+
+history = model.fit(X_train,y_train, epochs = 1500, batch_size = 8, validation_split=0.2, verbose = 1)
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+model_mv_week_12.h5 ( good) 8000 rmse good score and good fit with +R2
+
+1: window_size = 4
+2: lags = 3
+3: split size = 0.9
+model = Sequential()
+model.add(Bidirectional(LSTM(1024, activation = 'tanh', input_shape = ( X_train.shape[1], X_train.shape[2]), return_sequences=True)))
+model.add(Bidirectional(LSTM(512, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(256,activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(128, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(64, activation = 'tanh', return_sequences = True)))
+model.add(Bidirectional(LSTM(32, activation = 'tanh', return_sequences = False)))
+model.add(Dropout(0.3))
+model.add(Dense(1024))
+model.add(Dense(512))#256,
+model.add(Dense(512))#256,128
+model.add(Dense(512))
+model.add(Dense(y_train.shape[1]))
+
+history = model.fit(X_train,y_train, epochs = 1500, batch_size = 8, validation_split=0.2, verbose = 1)
