@@ -1,6 +1,8 @@
+# Importing Libraries
 
-
+# libraries for webapp
 import streamlit as st
+#libraries for EDA
 import pandas as pd
 import numpy as np
 import seaborn as sns
@@ -14,7 +16,7 @@ import plotly.figure_factory as ff
 import plotly.io as pio
 import datetime
 
-
+# Machine Learning and Deep Learning Libraries
 from tensorflow import keras
 import tensorflow as tf
 from tensorflow import keras
@@ -30,15 +32,18 @@ from keras.regularizers import L1L2
 from tensorflow.keras.models import load_model
 from numpy.random import seed
 
+
 ## Data exploration 
 #st.set_page_config(layout="wide")
+
+# creates a sidebar on the webapp with multiple subpage options
 option = st.sidebar.selectbox("Choose the following options",("Data Analysis", "Sales Forecasting","Custom Forecasting"))
 
+# condition to enter the first page
 if option == "Data Analysis":
+    # title of the first page
     st.title('Customer Retail Sales Forecasting')
-
-    
-
+    # created a space between the main title and the rest of the page
     st.write("---")
     """
     ### Data Source:
@@ -47,6 +52,7 @@ if option == "Data Analysis":
     st.markdown("""[TravelSleek:]('https://travelsleek.in/') It's a family-owned E-commerce business that specializes 
     in personalized travel products which are manufactured from Faux Leather.""")
 
+    # creates a dropdown box 
     with st.expander("Products"):
      st.write("""
          Customized Products.
@@ -60,8 +66,8 @@ if option == "Data Analysis":
     """
     ### Tech Stack
     """
+    # creating columns in the webapp so that the text or images can be arranged in the column format
     col1, col2, col3 = st.columns(3)
-    
     with col1:
         """
         ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
@@ -102,7 +108,6 @@ if option == "Data Analysis":
 ################### From plotly express ###################################################
     st.write('_____________________________')
     st.header(option)
-
     """
     ### Info:
     - Data was exported from E-commerce platform to .csv file.
@@ -116,11 +121,13 @@ if option == "Data Analysis":
     """
     st.write('_____________________________')
     st.subheader('Top5 selling products and their Revenue Generation')
+
+    # calling the .csv file
     Top5 = pd.read_csv('../forecast_data/Top5.csv')
     Top5 = Top5.sort_values(by = 'count', ascending=False)
     Top5_rev = pd.read_csv('../forecast_data/Top5_rev.csv')
     Top5_rev = Top5_rev.sort_values(by = 'Tot', ascending=False)
-
+    # barplot 
     fig2 = px.bar(Top5, x='product', 
                 y='count',text_auto='.3s',
                 title="Top 5 Selling Products",
@@ -131,6 +138,7 @@ if option == "Data Analysis":
     fig2.update_layout( yaxis = dict( tickfont = dict(size=18)))
     st.plotly_chart(fig2)
     st.write('_ _ _ _ _ _ _ ')
+
     fig1 = px.bar(Top5_rev, x='product', 
                 y='Tot',text_auto='.4s',
                 title="Revenue Generated from Top 5 Selling Products",
@@ -157,6 +165,7 @@ if option == "Data Analysis":
     st.subheader('Where are my Customers from?')
     states = pd.read_csv('../forecast_data/states.csv')
     #st.map(states)
+    # scatter plot
     fig_map = px.scatter_geo(states, lat="latitude", 
                             lon = "longitude",
                             hover_name="States",
@@ -179,14 +188,10 @@ if option == "Data Analysis":
 
     st.write('_____________________________')
 
-
-
-
-
 ######################################################################################################################################
 ######################################################################################################################################
 ######################################################################################################################################
-
+# page 2
 if option == "Sales Forecasting":
     st.title("Customer Sales Forecasting Using Bidirectional LSTM model")
 
@@ -274,9 +279,6 @@ Trial4: Best Model
         st.code(code, language='python')
         st.image('../plots/loss.png',width = 400, use_column_width=False)
 
-
-
-        
     with col2:
         st.write('#')
         st.write('#')
@@ -287,7 +289,6 @@ Trial4: Best Model
         - Input Gate
         - Output Gate
         """
-    
     
     forecast = pd.read_csv('../forecast_data/forecast_avg.csv')
     ########################################################################
@@ -328,7 +329,6 @@ Trial4: Best Model
     bbox=dict(boxstyle="square,pad=0.3",fc="black" ,ec="w", lw=0.5))
     bb = t.get_bbox_patch()
     bb.set_boxstyle("square", pad=0.3)
-
 
     mplcyberpunk.add_glow_effects()
     st.pyplot(fig)
@@ -456,9 +456,11 @@ if option == "Custom Forecasting":
     sales_ = sales_tot.copy()
 
  
-
+    st.subheader('Play with the parameters to get weekly forecast: ')
+    st.write('_____________________________')
     Moving_Avg = st.slider('Moving Average:', 1, 10)
     st.write('Moving_Avg', Moving_Avg)
+    st.write('#')
     n_futures = st.slider('Number of Weeks to forecast:', 1, 20)
     st.write('weeks:', n_futures)
 

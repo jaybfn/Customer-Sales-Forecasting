@@ -21,8 +21,10 @@ from tensorflow.keras.models import load_model
 from numpy.random import seed
 
 class LSTM_Model():
-    seed(42)
-    tf.random.set_seed(42)  
+    # setting the seed for BI-LSTM network so that everytime you run the network the prediction remains the same!
+    seed(42)initi
+    tf.random.set_seed(42) 
+    # 
     def __init__(self, dataframe, window_size, lags, trainsize):
 
         self.dataframe = dataframe
@@ -153,6 +155,7 @@ class LSTM_Model():
     the below code is not necessary: 
     
     sales_pred.evaluate_model(model)   """
+
 
 
 sales_tot = pd.read_csv('../data/sales_full.csv', index_col=0)
