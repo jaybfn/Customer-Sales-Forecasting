@@ -22,7 +22,7 @@ from numpy.random import seed
 
 class LSTM_Model():
     # setting the seed for BI-LSTM network so that everytime you run the network the prediction remains the same!
-    seed(42)initi
+    seed(42)
     tf.random.set_seed(42) 
     # 
     def __init__(self, dataframe, window_size, lags, trainsize):
